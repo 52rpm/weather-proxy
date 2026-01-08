@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: weather-proxy-static-site
+    env: static
+    buildCommand: npm install
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /api/weather
+        destination: /api/weather.js
+    envVars:
+      - key: OPENWEATHER_API_KEY
+        sync: false # You will set this value in the Render dashboard
